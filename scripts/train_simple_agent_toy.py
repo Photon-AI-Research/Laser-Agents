@@ -1,7 +1,7 @@
 import wandb
 import sys
 sys.path.append('..')
-sys.path.append('../toy_example/')
+sys.path.append('../rl_tests/additive_rework/')
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
@@ -83,5 +83,5 @@ train_params = {'batch_size':args.batch_size, 'update_every':args.update_every}
 
 # Start exploration based training
 agent.explore(env, num_episodes= args.n_episodes, episode_len=args.episode_len, train_params=train_params, surrogate=surrogate, prior=False, ssim=False, smooth_state=False, log_writer = log_writer, log_every=args.log_every, model_name= args.savedir+model_name)
-if args.savedir != None and args.savedir != 'None':
+if args.savedir != None:
     torch.save(agent.agent.state_dict(), args.savedir+model_name)
